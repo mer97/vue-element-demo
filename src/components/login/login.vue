@@ -36,9 +36,11 @@ export default {
           'Authorization': 'Basic cXVhbGl0eURhdGE6JDJhJDEwJGZDOU40WUxOWUlCLzgyM3ZQcjd2b2U3dWtndUtHSkRNYzdya210UmkxeHVCQ0lZZUcwMkJX'
         }
       }).then(function (response) {
-        localStorage.setItem('access_token', 'bearer ' + response.data['access_token'])
-        e.$router.push({name: 'home'})
-        e.$message.success('登录成功')
+        if (response && response.status === 200) {
+          localStorage.setItem('access_token', 'bearer ' + response.data['access_token'])
+          e.$router.push({name: 'home'})
+          e.$message.success('登录成功')
+        }
       })
     }
   }

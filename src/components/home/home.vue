@@ -21,7 +21,7 @@ export default {
           'X-Requested-With': 'XMLHttpRequest' // ajax请求标识
         }
       }).then(function (response) {
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           e.$alert(JSON.stringify(response.data), '登录用户信息', {
             confirmButtonText: '确定',
             callback: action => {
@@ -40,14 +40,12 @@ export default {
           'X-Requested-With': 'XMLHttpRequest' // ajax请求标识
         }
       }).then(function (response) {
-        if (response.status === 200) {
-          if (response.status === 200) {
-            e.$alert(JSON.stringify(response.data), '登录用户信息', {
-              confirmButtonText: '确定',
-              callback: action => {
-              }
-            })
-          }
+        if (response && response.status === 200) {
+          e.$alert(JSON.stringify(response.data), '登录用户信息', {
+            confirmButtonText: '确定',
+            callback: action => {
+            }
+          })
         }
       })
     },
@@ -65,7 +63,7 @@ export default {
           'reference_value': 100
         }
       }).then(function (response) {
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           e.$message.success('修改成功')
         }
       })
@@ -73,6 +71,7 @@ export default {
     logout () {
       localStorage.removeItem('access_token')
       this.$router.push({name: 'login'})
+      this.$message.success('退出成功')
     }
   }
 }
