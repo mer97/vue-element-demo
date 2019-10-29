@@ -1,7 +1,4 @@
 <template>
-<!--  <div>-->
-<!--    <el-button @click="updateReferenceValue" type="primary">修改kpi基准值</el-button>-->
-<!--  </div>-->
   <el-container class="container">
     <el-header class="header">
       <el-menu
@@ -19,7 +16,7 @@
           <el-menu-item index="2-2">选项2</el-menu-item>
           <el-menu-item index="2-3">选项3</el-menu-item>
         </el-submenu>
-        <el-menu-item><a @click="logout">退出</a></el-menu-item>
+        <el-menu-item @click="logout">退出</el-menu-item>
       </el-menu>
     </el-header>
     <el-container>
@@ -40,7 +37,7 @@
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-setting"></i>
-              <span>质量数据</span>
+              <span>质量管理</span>
             </template>
             <el-menu-item index="quality_manage_principal">当前登录用户信息</el-menu-item>
           </el-submenu>
@@ -64,21 +61,6 @@ export default {
     }
   },
   methods: {
-    // updateReferenceValue () {
-    //   const e = this
-    //   this.$http({
-    //     url: 'http://localhost:8082/qualityManage/api/v1/kpi_setting/reference_value',
-    //     method: 'PATCH'
-    //     data: {
-    //       'id': 1,
-    //       'reference_value': 100
-    //     }
-    //   }).then(function (response) {
-    //     if (response && response.status === 200) {
-    //       e.$message.success('修改成功')
-    //     }
-    //   })
-    // },
     logout () {
       localStorage.removeItem('token')
       this.$router.push({name: 'login'})
