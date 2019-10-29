@@ -37,7 +37,7 @@ export default {
         }
       }).then(function (response) {
         if (response && response.status === 200) {
-          localStorage.setItem('access_token', 'bearer ' + response.data['access_token'])
+          localStorage.setItem('token', 'bearer ' + response.data['access_token'])
           e.$router.push({name: 'home'})
           e.$message.success('登录成功')
         }
