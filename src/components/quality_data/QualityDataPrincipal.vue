@@ -1,5 +1,5 @@
 <template>
-    <h1 id="data"></h1>
+    <h1 ref="principal"></h1>
 </template>
 
 <script>
@@ -8,19 +8,11 @@ export default {
     this.getQualityDataPrincipal()
   },
   methods: {
-    getQualityDataPrincipal () {
-      this.$http({
-        url: 'http://localhost:8081/qualityData/api/v1/principal',
-        method: 'GET',
-        headers: {
-          'Authorization': localStorage.getItem('token'), // 资源令牌
-          'X-Requested-With': 'XMLHttpRequest' // ajax请求标识
-        }
-      }).then(function (response) {
-        if (response && response.status === 200) {
-          document.getElementById('data').innerHTML = JSON.stringify(response.data)
-        }
-      })
+    async getQualityDataPrincipal () {
+      const res = await this.$http.get('http://localhost:8081/qualityData/api/v1/principal')
+      if (res && res.status === 200) {
+        this.$refs.principal.innerHTML = JSON.stringify(res.data)
+      }
     }
   }
 }

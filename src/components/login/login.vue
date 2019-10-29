@@ -25,23 +25,17 @@ export default {
     }
   },
   methods: {
-    handleLogin () {
-      const e = this
-      this.$http({
+    async handleLogin () {
+      const res = await this.$http({
         url: 'http://localhost:8080/api/v1/login',
         method: 'post',
-        data: qs.stringify(this.formData),
-        headers: {
-          // 固定的（sso-server配置的）
-          'Authorization': 'Basic cXVhbGl0eURhdGE6JDJhJDEwJGZDOU40WUxOWUlCLzgyM3ZQcjd2b2U3dWtndUtHSkRNYzdya210UmkxeHVCQ0lZZUcwMkJX'
-        }
-      }).then(function (response) {
-        if (response && response.status === 200) {
-          localStorage.setItem('token', 'bearer ' + response.data['access_token'])
-          e.$router.push({name: 'home'})
-          e.$message.success('登录成功')
-        }
+        data: qs.stringify(this.formData)
       })
+      if (res && res.status === 200) {
+        localStorage.setItem('token', 'bearer ' + res.data['access_token'])
+        await this.$router.push({name: 'home'})
+        this.$message.success('登录成功')
+      }
     }
   }
 }

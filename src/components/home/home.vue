@@ -68,11 +68,7 @@ export default {
     //   const e = this
     //   this.$http({
     //     url: 'http://localhost:8082/qualityManage/api/v1/kpi_setting/reference_value',
-    //     method: 'PATCH',
-    //     headers: {
-    //       'Authorization': localStorage.getItem('token'), // 资源令牌
-    //       'X-Requested-With': 'XMLHttpRequest' // ajax请求标识
-    //     },
+    //     method: 'PATCH'
     //     data: {
     //       'id': 1,
     //       'reference_value': 100
