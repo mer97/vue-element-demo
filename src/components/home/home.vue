@@ -35,12 +35,19 @@
             <el-menu-item index="quality_data_principal">当前登录用户信息</el-menu-item>
           </el-submenu>
           <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span>质量管理</span>
-            </template>
-            <el-menu-item index="quality_manage_principal">当前登录用户信息</el-menu-item>
-          </el-submenu>
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span>质量管理</span>
+          </template>
+          <el-menu-item index="quality_manage_principal">当前登录用户信息</el-menu-item>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span>echarts</span>
+          </template>
+          <el-menu-item index="site_visit">某站点用户访问来源</el-menu-item>
+        </el-submenu>
         </el-menu>
       </el-aside>
       <el-main class="main">
@@ -53,13 +60,13 @@
 <script>
 export default {
   // 校验是否登录（通过判断是否存在token）
-  beforeCreate () {
-    // 获取token
-    const token = localStorage.getItem('token')
-    if (!token) {
-      this.$router.push({ name: 'login' })
-    }
-  },
+  // beforeCreate () {
+  //   // 获取token
+  //   const token = localStorage.getItem('token')
+  //   if (!token) {
+  //     this.$router.push({ name: 'login' })
+  //   }
+  // },
   methods: {
     logout () {
       localStorage.removeItem('token')

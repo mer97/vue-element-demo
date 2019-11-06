@@ -4,6 +4,7 @@ import Login from '@/components/login/login.vue'
 import Home from '@/components/home/home.vue'
 import QualityDataPrincipal from '@/components/quality_data/QualityDataPrincipal.vue'
 import QualityManagePrincipal from '@/components/quality_manage/QualityManagePrincipal.vue'
+import echarts from '@/components/echarts/echarts.vue'
 
 Vue.use(Router)
 
@@ -21,13 +22,18 @@ export default new Router({
       children: [
         {
           path: 'quality_data_principal',
-          name: 'QualityDataPrincipal',
+          name: 'qualityDataPrincipal',
           component: QualityDataPrincipal
         },
         {
           path: 'quality_manage_principal',
-          name: 'QualityManagePrincipal',
+          name: 'qualityManagePrincipal',
           component: QualityManagePrincipal
+        },
+        {
+          path: 'site_visit',
+          name: 'siteVisit',
+          component: echarts
         }
       ]
     }
