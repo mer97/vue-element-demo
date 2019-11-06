@@ -30,12 +30,14 @@ export default {
   methods: {
     drawBar () {
       let option = {
+        // 标题
         title: {
           text: '某站点用户访问来源'
         },
         tooltip: {
           trigger: 'axis'
         },
+        // 图标
         legend: {
           data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
         },
@@ -45,25 +47,51 @@ export default {
           bottom: '3%',
           containLabel: true
         },
+        // 工具箱
         toolbox: {
           feature: {
             saveAsImage: {}
           }
         },
+        // x轴
         xAxis: {
           type: 'category',
           boundaryGap: false,
           data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
         },
+        // y轴
         yAxis: {
           type: 'value'
         },
+        // 数据
         series: [
           {
             name: '邮件营销',
-            type: 'line',
+            type: 'line', // 折线图
             stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: [120, 132, 101, 134, 90, 230, 210],
+            // 标记点
+            markPoint: {
+              data: [
+                {type: 'max', name: '最大值'},
+                {type: 'min', name: '最小值'}
+              ]
+            },
+            // 基准线
+            markLine: {
+              label: {
+                position: 'end'
+              },
+              data: [
+                {
+                  yAxis: 1500,
+                  lineStyle: {
+                    color: 'red',
+                    width: 2
+                  }
+                }
+              ]
+            }
           },
           {
             name: '联盟广告',
@@ -95,6 +123,10 @@ export default {
       let barGraph = echarts.init(document.getElementById('barGraph'))
       // 绘制图表
       barGraph.setOption(option)
+      // 点击事件
+      barGraph.on('click', function (param) {
+        console.log(param)
+      })
     },
     drawPie () {
       let option = {
